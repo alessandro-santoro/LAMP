@@ -25,5 +25,4 @@
 
         // Output the greeting and browser information
         echo "$greeting $name, benvenuto nella mia prima pagina PHP!<br>";
-        echo "Stai usando il browser: $browser";
     ?>
