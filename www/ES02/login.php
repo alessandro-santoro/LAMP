@@ -3,7 +3,7 @@ $username = $_POST['username'];
 $passwd = $_POST['password'];
 
 
-if($username=="Mario" && $passwd=="123") {
+if($username=="alessandro" && $passwd=="098") {
   $msg = "<h2>Inserire altre credenziali<h2>";
 } else {
   $msg = "Benvenuto $username nella pagina riservata del mio sito!";
