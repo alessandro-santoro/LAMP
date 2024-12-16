@@ -1,28 +1,44 @@
 <!DOCTYPE html>
-<html lang >
+<html lang="it">
 <head>
-<title>Esercitazione b</title>
+    <title>Esercitazione b</title>  
 </head>
 <body>
+
     <?php
-        $name = "Paolo";
+    // Inizio del codice PHP
 
-        // Get the current time in the Europe/Rome timezone
-        $today = new DateTime("now", new DateTimeZone('Europe/Rome'));
-        $hour = $today->format('H');
+    // Definisco il nome dell'utente  
+    $name = "Paolo"; 
 
-        // Determine the greeting based on the time of day
-        if ($hour >= 8 && $hour < 12) {
-            $greeting = "Buongiorno";
-        } elseif ($hour >= 12 && $hour < 20) {
-            $greeting = "Buonasera";
-        } else {
-            $greeting = "Buonanotte";
-        }
+    // Crea un oggetto DateTime che rappresenta l'ora attuale
+    $today = new DateTime("now", new DateTimeZone('Europe/Rome'));
 
-        // Get the user agent to detect the browser
-        $browser = $_SERVER['HTTP_USER_AGENT'];
+    // Estrae l'ora attuale in formato 24 ore 
+    $hour = $today->format('H'); 
 
-        // Output the greeting and browser information
-        echo "$greeting $name, benvenuto nella mia prima pagina PHP!<br>";
+    // Determina il saluto in base all'ora attuale
+    
+    if ($hour >= 8 && $hour < 12) {
+        $greeting = "Buongiorno";
+    }
+
+    elseif ($hour >= 12 && $hour < 20) {
+        $greeting = "Buonasera";
+    }
+
+    else {
+        $greeting = "Buonanotte";
+    }
+
+    // Recupero il tipo di browser dell'utente 
+    $browser = $_SERVER['HTTP_USER_AGENT']; 
+
+    // visualizzo il saluto, il buongiorno con la variabile$greeting e il nome con $name
+    echo "$greeting $name, benvenuto nella mia prima pagina PHP!<br>";
+
+    echo "Stai usando il browser: $browser"; // Mostra il browser dell'utente
     ?>
+
+</body>
+</html>
