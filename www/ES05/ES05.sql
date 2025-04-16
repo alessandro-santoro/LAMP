@@ -1,4 +1,4 @@
--- DROP DATABASE IF EXISTS ES05;
+ -- DROP DATABASE IF EXISTS ES05;
 CREATE DATABASE IF NOT EXISTS ES05;
 USE ES05; SHOW DATABASES;
 
@@ -16,16 +16,17 @@ CREATE TABLE IF NOT EXISTS utente (
   UserID INT NOT NULL AUTO_INCREMENT ,
   Username VARCHAR(64) NOT NULL UNIQUE,
   Password VARCHAR(64) NOT NULL ,
+  email VARCHAR(64) NOT NULL UNIQUE,
   PRIMARY KEY (UserID)
-) AUTO_INCREMENT=1000;
+) ENGINE=InnoDB AUTO_INCREMENT=1000;
 SHOW TABLES; 
 SHOW CREATE TABLE utente;
 
 INSERT INTO utente (UserID, Username, Password 
-) VALUES (NULL, 'utente', 'prova');
+) VALUES (NULL, 'utente', 'prova','prova@gmail.com');
 
 INSERT INTO utente VALUES 
-(NULL, 'mrossi', '123'),
-(NULL, 'admin', 'admin');
+(NULL, 'mrossi', '123','mrossi@gmail.com'),
+(NULL, 'admin', 'admin','admin@gmail.com');
 
 SELECT * FROM utente;
