@@ -1,62 +1,53 @@
-<?php 
-    session_start();
-    if(isset($_SESSION['utente'])){
-        header('Location: index.php');
-        die();
-    }
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+    header('Location: index.php');
+    die();
+}
 
-    if (isset($_GET['error'])) {                                         
-        // Mostra il messaggio di errore passato tramite query string     
-        $mess=$_GET['error'];  
-    }
+if (isset($_GET['error'])) {
+    $err_msg = "<h3 style='color:red'>" . $_GET['error'] . '</h3>';
+}
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if ($username == 'alessandro' && $password == '1234') {
 
-if($_SERVER['REQUEST_METHOD']=='POST') {
-    $username_corretto = 'alessandro';
-    $password_corretta = '12345';
+        $_SESSION['username'] = $username;
+        
+        $url = 'Location: ';
+        $url .= $_POST['from'] == null ? 'index.php' : $_POST['from'];
 
-    $username_inserito = $_POST['utente'];
-    $password_inserita = $_POST['password'];
-
-    if ($username_inserito == $username_corretto && $password_inserita == $password_corretta) {
-        // Se i dati sono corretti, salva il nome utente nella sessione e reindirizza l'utente alla pagina principale
-        $_SESSION['utente'] = $username_inserito;
-        $collegamento = 'Location: ';
-        $collegamento .=(!empty($_POST['from']) ? $_POST['from'] : 'index.php');
-        header($collegamento);
+        header($url);
         die();
 
     } else {
-        $mess= "<h2 style ='color:red'>Nome utente o password errati. Riprova.</h2>";
+        $err_msg = "<h3 style='color:red'>username o pasword sbagliati</h3>";
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="it">
-    <head>
-        <title>Accesso</title>
-    </head>
-    <body>
-    <?=$mess?>
-        <h1>Accesso</h1>
-        <form action="<?php echo $_SESSION['PHP_SELF']; ?>" method="POST">
-            <label for="utente">Nome utente:</label>
-            <input type="text" id="utente" name="utente" required><br><br>
-        
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <?=$err_msg?>
 
-            <input type="submit" value="Accedi">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <input type="submit" value="Login">
 
-             <input type="reset" value="Cancella">
-
-            </br>
-            </br>
-            <a href="index.php">Torna alla home</a>
-
-            <input type="hidden" name="from" value="<?=$_GET['from'] ?? null ?>">
-
-        </form>
-    </body>
+        <input type="hidden" name="from" value="<?=$_GET['from'] ?? null ?>" >
+    </form>
+</body>
 </html>

@@ -1,22 +1,23 @@
 <?php
     session_start();
-    if(isset($_SESSION['utente'])){
-        $collegamento = "<a href='logout.php'>Esci</a>";
+    if(isset($_SESSION['username'])){
+        $link = "<a href='logout.php'>Logout</a>";
     } else {
-        $collegamento = "<a href='login.php'>Accedi</a>";
+        $link = "<a href='login.php'>Login</a>";
     }
+
 ?>
-
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Pagina di Benvenuto</title>
-    </head>
-    <body>
-        <h1>Benvenuto</h1>
-        <h2>Questa è una pagina di benvenuto.</h2>
-        <a href="riservata.php">Riservata</a><br />
-        <?php echo $collegamento;?>
-    </body>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina di Benvenuto</title>
+</head>
+<body>
+    <h1>Benvenuto!</h1>
+    <a href="riservata.php">Accedi alla pagina riservata</a>
+    <br>
+    <?php echo $link; ?>
+</body>
 </html>
