@@ -6,7 +6,7 @@ define('DB_PASSWORD', 'mia_password');
 define('DB_NAME', 'ES05');
 $html_out = "";
 try {
-// Connessione al database
+// Connessione al databas
 $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 // Verifica della connessione
