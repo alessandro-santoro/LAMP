@@ -1,7 +1,4 @@
-<?php
-
-$html_link .= '<a href="login.php">Pagina Login</a>';
-?>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +6,15 @@ $html_link .= '<a href="login.php">Pagina Login</a>';
 </head>
 <body>
   <h2>ES05 - Login con PHP e MySql</h2>
-  <p>Benvenuto. Questa è la home page del sito.<br />
-  <?=$html_link?>
+<h2>Accedi</h2>
+    <form method="POST" action="login.php">
+        <label>Username:</label><br>
+        <input type="text" name="username" required><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <input type="submit" value="Accedi">
+    </form>
 </body>
 </html>

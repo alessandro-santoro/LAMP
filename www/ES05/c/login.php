@@ -25,25 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $html = "<p>Benvenuto <strong>$username</strong>, login riuscito.</p>";
         } else {
             $title = "Accesso negato";
-            $html = "<p>Nome utente o password errati. <a href=''>Riprova</a></p>";
+            $html = "<p>Nome utente o password errati. <a href='index.php'>Riprova</a></p>";
         }
 
         mysqli_close($conn);
     }
-} else {
-    $html = <<<FORM
-    <h2>Accedi</h2>
-    <form method="POST" action="">
-        <label>Username:</label><br>
-        <input type="text" name="username" required><br><br>
-
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
-
-        <input type="submit" value="Accedi">
-    </form>
-    FORM;
-}
+} 
 ?>
 
 <!DOCTYPE html>
